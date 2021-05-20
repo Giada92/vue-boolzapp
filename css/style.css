@@ -8,6 +8,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.c_grey {
+    color: grey;
+}
+
 /* Sfondo */
 .wrapper {
     display: flex;
@@ -25,27 +29,27 @@ body {
     box-shadow: 5px 5px 10px grey;
 }
 
-/* Main - left */
+/* Section - left */
 #nav-left {
     width: 400px;
     height: 100%;
-    background-color: blue;
+    background-color: white;
 }
 
 .container-top {
     display: flex;
     width: 100%;
-    height: 80px;
+    height: 70px;
     background-color: #EAEAEA;
 }
 
 .top {
     width: 50%;
     height: 100%;
-    line-height: 80px;
+    line-height: 70px;
 }
 .my_img > img {
-    width: 30%;
+    width: 25%;
     border-radius: 50%;
     vertical-align: middle;
     margin-left: 10px;
@@ -60,7 +64,7 @@ body {
 }
 .icons > i {
     margin-right: 10px;
-    font-size: 22px;
+    font-size: 20px;
     vertical-align: middle;
     color: #B1B1B1;
 }
@@ -68,14 +72,66 @@ i:hover {
     cursor: pointer;
     color: #8b8a8a;
 }
-/* Main - left - notifiche */
+/* Section - left - notifiche */
 .notifiche {
+    display: flex;
+    align-items: center;
     height: 85px;
     width: 100%;
+    padding-left: 15px;
     background-color: #8EDAFC;
 }
 
-/* Main - right */
+.notifiche > i {
+    font-size: 22px;
+    background-color: white;
+    border-radius: 50%;
+    color: #8EDAFC;
+    padding: 12px 10px;
+}
+
+.text-notifiche {
+    margin-left: 10px;
+}
+
+.text-notifiche > p {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.text-notifiche > span {
+    font-size: 13px;
+    text-decoration: underline;
+}
+/* Input-nav */
+.container-input-nav {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    padding: 5px;
+    background-color: #FAFAFA;
+}
+
+#input_nav{
+    width: 85%;
+    height: 100%;
+    border: none;
+}
+
+.container-input-nav-i {
+    height: 40px;
+    width: 15%;
+    line-height: 40px;
+    background-color: white;
+}
+
+.container-input-nav-i > i {
+    vertical-align: middle;
+    padding: 0 20px;
+}
+
+/* Section - right */
 #section-right {
     width: calc(100% - 400px);
     height: 100%;
