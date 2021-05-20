@@ -71,7 +71,7 @@
                     <!-- Top -->
                     <div class="container-top border">
                         <div class="avatar">
-                            <img src="img/avatar_1.jpg" alt="Michele">
+                            <img :src="goToImg(activeIndex)" alt="Michele">
                             <div class="user">
                                 <p>{{ contacts[activeIndex].name }}</p>
                                 <span class="c_grey">{{ contacts[activeIndex].messages[activeIndex2].date }}</span>
