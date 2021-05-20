@@ -23,7 +23,7 @@ body {
 /* Main */
 #root {
     display: flex;
-    width: 1100px;
+    width: 1200px;
     height: 750px;
     margin: auto;
     box-shadow: 5px 5px 10px grey;
@@ -130,6 +130,47 @@ i:hover {
     vertical-align: middle;
     padding: 0 20px;
 }
+
+/* Lista chat */
+#contatti {
+    height: calc(100% - 205px);
+    /* background-color: tomato; */
+    overflow-y: auto;
+}
+
+.chat {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    border-top: 1px solid rgb(230, 229, 229);
+    border-bottom: 1px solid rgb(238, 233, 233);
+}
+
+.chat > img {
+    width: 14%;
+    margin-left: 20px;
+    border-radius: 50%;
+}
+
+.user {
+    margin-left: 10px;
+    padding-right: 55px;
+}
+.user > p {
+    font-weight: 500;
+}
+.user > span {
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.chat > p {
+    font-weight: 300;
+    font-size: 12px;
+    padding-left: 60px;
+}
+
 
 /* Section - right */
 #section-right {
