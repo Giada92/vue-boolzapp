@@ -152,11 +152,16 @@ i:hover {
     margin-left: 20px;
     border-radius: 50%;
 }
+.chat:active {
+    background-color: #E9EBEB;
+}
+
 
 .user {
     margin-left: 10px;
     padding-right: 55px;
 }
+
 .user > p {
     font-weight: 500;
 }
@@ -177,4 +182,36 @@ i:hover {
     width: calc(100% - 400px);
     height: 100%;
     background-color: burlywood;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+.avatar > img {
+    width: 15%;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.border {
+    border-left: 1px solid #cecccc;
+}
+
+/* Section - Corpo dei messaggi */
+#container-messaggi{
+    width: 100%;
+    height: calc(100% - 140px);
+    overflow-y: auto;
+    background-image: url("../img/mine.jpg");
+}
+
+/* Section - bottom - invio messaggi */
+#container-input-mess{
+    width: 100%;
+    height: 70px;
+    background-color: #F3EEEA;
 }
