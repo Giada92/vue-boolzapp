@@ -237,11 +237,6 @@ h6 {
     font-weight: 500;
 }
 
-/* .messaggio > span {
-    font-size: 12px;
-    text-align: end;
-}
- */
 h6::after {
     content: "\2713";
     margin-left: 5px;
