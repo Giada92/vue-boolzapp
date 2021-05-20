@@ -51,11 +51,13 @@
 
                     <!-- Contenitore lista chat -->
                     <div id="contatti">
-                        <div v-for="(contact, index) in contacts" class="chat">
+                        <div v-for="(contact, index) in contacts" class="chat"
+                            :class="(activeIndex == index) ? 'active' : ''"
+                            @click="classeActive(index)">
                             <img :src="goToImg(index)" alt="Michele">
                             <div class="user">
                                 <p>{{ contact.name }}</p>
-                                <span class="c_grey">Tutto fatto!......</span>
+                                <span class="c_grey">{{ contact.messages[activeIndex2].text }}</span>
                             </div>
                             <p>10/01/2020 16:15:22</p>
                         </div>
@@ -71,8 +73,8 @@
                         <div class="avatar">
                             <img src="img/avatar_1.jpg" alt="Michele">
                             <div class="user">
-                                <p>Michele</p>
-                                <span class="c_grey">Ultimo accesso oggi alle 16:15:22</span>
+                                <p>{{ contacts[activeIndex].name }}</p>
+                                <span class="c_grey">{{ contacts[activeIndex].messages[activeIndex2].date }}</span>
                             </div>
                         </div>
                         <div class="icons top">

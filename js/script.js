@@ -154,13 +154,25 @@ var app = new Vue(
                         }
                     ],
                 }
-            ]
+            ],
+            activeIndex: 0,
+            activeIndex2: 0
         },
         methods: {
             goToImg: function(newIndex){
                 let img = this.contacts[newIndex].avatar;
                 return "img/avatar" + img + ".jpg";
-            }
+            },
+            classeActive: function (newIndex) {
+                this.activeIndex = newIndex;
+            },
+            /* ridurreLength: function(){
+                console.log(this.contacts[this.activeIndex].messages[this.activeIndex2].text.length);
+                let textLength =this.contacts[this.activeIndex].messages[this.activeIndex2].text.length;
+                if(textLength >= 28){
+                    textLength = 28;
+                }
+            } */
         }
     }
 );

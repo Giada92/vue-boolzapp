@@ -18,6 +18,24 @@ body {
     background-color: white;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: #B1B1B1; 
+}
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555;  
+}
+
 /* Sfondo */
 .wrapper {
     display: flex;
@@ -159,10 +177,10 @@ i:hover {
     margin-left: 20px;
     border-radius: 50%;
 }
-.chat:active {
+
+.active {
     background-color: #E9EBEB;
 }
-
 
 .user {
     margin-left: 10px;
@@ -179,7 +197,7 @@ i:hover {
 
 .chat > p {
     font-weight: 300;
-    font-size: 12px;
+    font-size: 10px;
     padding-left: 60px;
 }
 
