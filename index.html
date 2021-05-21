@@ -52,7 +52,7 @@
                     <!-- Contenitore lista chat -->
                     <div id="contatti">
                         <div v-for="(contact, index) in contacts" class="chat"
-                            :class="(activeIndex == index) ? 'active' : ''"
+                            :class="(index == activeIndex) ? 'active' : ''"
                             @click="classeActive(index)">
                             <img :src="goToImg(index)" :alt="contact.name">
                             <div class="user">
@@ -74,7 +74,7 @@
                             <img :src="goToImg(activeIndex)" alt="Michele">
                             <div class="user">
                                 <p>{{ contacts[activeIndex].name }}</p>
-                                <span class="c_grey">{{ lastDataMessage(activeIndex) }}</span>
+                                <span class="c_grey">Ultimo accesso oggi alle {{ lastDataMessage(activeIndex) }}</span>
                             </div>
                         </div>
                         <div class="icons top">
@@ -87,24 +87,22 @@
 
                     <!-- Corpo dei messaggi -->
                     <div id="container-messaggi">
-                        <div class="messaggio inviato bg_green">
-                            <p>Hai portato a spasso il cane?</p>
-                            <h6 class="c_grey">15:22</h6>
+                        <div v-if="(message.status == 'sent')" 
+                        v-for="(message, index) in contacts[activeIndex].messages" 
+                        class="messaggio inviato bg_green">
+                            <p>{{ message.text }}</p>
+                            <h6 class="c_grey">{{ message.date }}</h6>
                         </div>
-                        <div class="messaggio inviato bg_green">
-                            <p>Ricordati di dargi da mangiare</p>
-                            <h6 class="c_grey">15:22</h6>
-                        </div>
-                        <div class="messaggio ricevuto ">
+                        <div v-else class="messaggio ricevuto ">
                             <div class="messaggio inviato bg_white">
-                                <p>Tutto fatto!</p>
-                                <h6 class="c_grey">15:22</h6>
+                                <p>{{ message.text }}</p>
+                                <h6 class="c_grey">{{ message.date }}</h6>
                             </div>
                         </div>
                     </div>
 
                     <!-- /Corpo dei messaggi -->
-
+                    
                     <!-- Barra invio messaggio -->
                     <div id="container-input-mess">
                         <div class="smile">

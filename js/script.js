@@ -93,12 +93,12 @@ var app = new Vue(
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
-                            text: 'Lo sai che ha aperto una nuova pizzeria?',
+                            text: 'Andiamo in montagna?',
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            text: 'Si, ma preferirei andare al cinema',
+                            text: 'Siiii!!!!!!!!!!!!!',
                             status: 'received'
                         }
                     ],
@@ -155,7 +155,8 @@ var app = new Vue(
                     ],
                 }
             ],
-            activeIndex: 0
+            activeIndex: 0,
+            /* dataCorrente: dayjs('2021-01-25').format('DD/MM/YYYY') */
         },
         methods: {
             goToImg: function(newIndex){
