@@ -156,7 +156,8 @@ var app = new Vue(
                 }
             ],
             activeIndex: 0,
-            /* dataCorrente: dayjs('2021-01-25').format('DD/MM/YYYY') */
+            nuovoMessaggio: "",
+            dataCorrente: ""
         },
         methods: {
             goToImg: function(newIndex){
@@ -176,6 +177,19 @@ var app = new Vue(
                 //console.log(newIndex);
                 let lunghezza = this.contacts[newIndex].messages.length - 1;
                 return this.contacts[newIndex].messages[lunghezza].date;
+            },
+            addNewMess: function(newIndex){ 
+                console.log("ho cliccato");
+                //console.log(this.contacts[newIndex].messages);
+                //var d= new Date();
+                this.dataCorrente = dayjs().format('DD/MM/YYYY HH:mm:ss');
+                this.contacts[newIndex].messages.push({
+                    date: this.dataCorrente,
+                    text: this.nuovoMessaggio,
+                    status: 'sent'
+                });
+
+                this.nuovoMessaggio = ""
             }
         }
     }

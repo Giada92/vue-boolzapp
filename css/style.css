@@ -244,7 +244,7 @@ i:hover {
 
 .messaggio{
     display: inline-block;
-    width: 60%;
+    /* width: 60%; */
     /* height: 60px; da modificare  */
     margin: 5px 0;
     padding: 10px;
