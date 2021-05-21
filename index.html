@@ -22,7 +22,7 @@
                     <div class="container-top">
                         <div class="my_img top">
                             <img src="img/avatar_io.jpg" alt="">
-                            <span>Giada</span>
+                            <span>Giada Meloni</span>
                         </div>
                         <div class="icons top">
                             <i class="fas fa-circle-notch"></i>
@@ -54,12 +54,12 @@
                         <div v-for="(contact, index) in contacts" class="chat"
                             :class="(activeIndex == index) ? 'active' : ''"
                             @click="classeActive(index)">
-                            <img :src="goToImg(index)" alt="Michele">
+                            <img :src="goToImg(index)" :alt="contact.name">
                             <div class="user">
                                 <p>{{ contact.name }}</p>
-                                <span class="c_grey">{{ contact.messages[activeIndex2].text }}</span>
+                                <span class="c_grey">{{ lastMessage(index) }}</span>
                             </div>
-                            <p>10/01/2020 16:15:22</p>
+                            <p>{{ lastDataMessage(index) }}</p>
                         </div>
                     </div>
                     <!-- /Contenitore lista chat -->
@@ -74,7 +74,7 @@
                             <img :src="goToImg(activeIndex)" alt="Michele">
                             <div class="user">
                                 <p>{{ contacts[activeIndex].name }}</p>
-                                <span class="c_grey">{{ contacts[activeIndex].messages[activeIndex2].date }}</span>
+                                <span class="c_grey">{{ lastDataMessage(activeIndex) }}</span>
                             </div>
                         </div>
                         <div class="icons top">

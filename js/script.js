@@ -155,8 +155,7 @@ var app = new Vue(
                     ],
                 }
             ],
-            activeIndex: 0,
-            activeIndex2: 0
+            activeIndex: 0
         },
         methods: {
             goToImg: function(newIndex){
@@ -166,15 +165,22 @@ var app = new Vue(
             classeActive: function (newIndex) {
                 this.activeIndex = newIndex;
             },
-            /* ridurreLength: function(){
-                console.log(this.contacts[this.activeIndex].messages[this.activeIndex2].text.length);
-                let textLength =this.contacts[this.activeIndex].messages[this.activeIndex2].text.length;
-                if(textLength >= 28){
-                    textLength = 28;
-                }
-            } */
+            lastMessage: function(newIndex){
+                //console.log(newIndex);
+                let lunghezza = this.contacts[newIndex].messages.length - 1;
+                //console.log(this.contacts[newIndex].messages[lunghezza].text);
+                return this.contacts[newIndex].messages[lunghezza].text.slice(0, 24) + `...`;
+            },
+            lastDataMessage: function(newIndex) {
+                //console.log(newIndex);
+                let lunghezza = this.contacts[newIndex].messages.length - 1;
+                return this.contacts[newIndex].messages[lunghezza].date;
+            }
         }
     }
 );
 
 /* Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto, ricavandoli dall'array contacts qui allegato */
+
+/* Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione
+Click sul contatto mostra la conversazione del contatto cliccato */
