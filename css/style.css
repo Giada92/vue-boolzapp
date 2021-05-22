@@ -103,6 +103,8 @@ i:hover {
     height: 85px;
     width: 100%;
     padding-left: 15px;
+    border-top: 1px solid rgb(230, 229, 229);
+    border-bottom: 1px solid rgb(238, 233, 233);
     background-color: #8EDAFC;
 }
 
@@ -239,6 +241,13 @@ i:hover {
     height: calc(100% - 140px);
     overflow-y: auto;
     padding: 20px 30px 0 30px;
+}
+
+.dark-box {
+    background-image: url("../img/darck.jpg");
+}
+
+.chat-box {
     background-image: url("../img/mine.jpg");
 }
 
@@ -277,6 +286,9 @@ h6::after {
     height: 70px;
     padding: 10px 5px;
     line-height: 50px;
+}
+
+.input_mess_light {
     background-color: #F3EEEA;
 }
 
@@ -296,4 +308,13 @@ h6::after {
     border: none;
     padding-left: 10px;
     border-radius: 50px;
+}
+
+.light {
+    background: #eee;
+}
+
+.dark {
+    background: rgb(70, 69, 69);
+    color: white;
 }

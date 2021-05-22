@@ -187,30 +187,36 @@ var app = new Vue(
                     ],
                 }
             ],
+            tema: 'light',
             activeIndex: 0,
             nuovoMessaggio: "",
-            dataCorrente: "",
-            cerca: ""
+            dataCorrente: ""
         },
         methods: {
+            //funzione per recuperare una parte di nuome delle immagini degli avatar
             goToImg: function(newIndex){
                 let img = this.contacts[newIndex].avatar;
                 return "img/avatar" + img + ".jpg";
             },
+            //funzione per selezionare un contatto
             classeActive: function (newIndex) {
                 this.activeIndex = newIndex;
             },
+            //funzione per recuperare l'ultimo messaggio
             lastMessage: function(newIndex){
                 //console.log(newIndex);
                 let lunghezza = this.contacts[newIndex].messages.length - 1;
                 //console.log(this.contacts[newIndex].messages[lunghezza].text);
                 return this.contacts[newIndex].messages[lunghezza].text.slice(0, 24) + `...`;
             },
+            //funzione per recuperare l'ultima data
             lastDataMessage: function(newIndex) {
                 //console.log(newIndex);
                 let lunghezza = this.contacts[newIndex].messages.length - 1;
                 return this.contacts[newIndex].messages[lunghezza].date;
             },
+            //funzione per inviare un messaggio
+            //setTimeout per ricevere una riposta random 
             addNewMess: function(newIndex){ 
                 console.log("ho cliccato");
                 //console.log(this.contacts[newIndex].messages);
@@ -235,20 +241,18 @@ var app = new Vue(
 
                 this.nuovoMessaggio = ""
             },
-            ricerca: function(newContacs){
-                console.log("newContacs");
-                //const caratteri = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                /* var fruits = ["Banana", "Orange", "Apple", "Mango"];
-                var n = fruits.includes("Mango"); */
-                //recupero i nomi
-                let nomi = newContacs;
-                console.log(nomi);
-                console.log(this.cerca);
-                let ricerca = nomi.includes(this.cerca);
-                console.log(ricerca);
-            }
-                
-           
+            //funzione per cambiare tema del colore
+            toggle() {
+                switch (this.tema) {
+                  case 'light':
+                    this.tema = 'dark';
+                    break;
+                  case 'dark':
+                    this.tema = 'light';
+                    break;
+                  default:
+                }
+              }
         }
     }
 );

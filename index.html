@@ -20,19 +20,21 @@
             <main id="root">
                 <!-- Section - nav left -->
                 <section id="nav-left">
-                    <div class="container-top">
+                    <div class="container-top" :class="tema">
                         <div class="my_img top">
                             <img src="img/avatar_io.jpg" alt="">
                             <span>Giada Meloni</span>
                         </div>
                         <div class="icons top">
-                            <i class="fas fa-circle-notch"></i>
+                            <span>{{tema}}</span>
+                            <i class="fas fa-circle-notch"
+                            @click="toggle"></i>
                             <i class="fas fa-comment-alt"></i>
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
                     <!-- Notifiche nuovi messaggi -->
-                    <div class="notifiche">
+                    <div class="notifiche" :class="tema">
                         <i class="far fa-bell-slash"></i>
                         <div class="text-notifiche">
                             <p>Ricevi notifiche di nuovi messaggi</p>
@@ -42,7 +44,7 @@
                     <!-- /Notifiche nuovi messaggi -->
 
                     <!-- Nav-input -->
-                    <div class="container-input-nav">
+                    <div class="container-input-nav" :class="tema">
                         <div class="container-input-nav-i">
                             <i class="fas fa-search c_grey"></i>
                         </div>
@@ -52,7 +54,7 @@
                     <!-- /Nav-input -->
 
                     <!-- Contenitore lista chat -->
-                    <div id="contatti">
+                    <div id="contatti" :class="tema">
                         <div v-for="(contact, index) in contacts" class="chat"
                             :class="(index == activeIndex) ? 'active' : ''"
                             @click="classeActive(index)">
@@ -71,7 +73,7 @@
                 <!-- Section - right -->
                 <section id="section-right">
                     <!-- Top -->
-                    <div class="container-top border">
+                    <div class="container-top border" :class="tema">
                         <div class="avatar">
                             <img :src="goToImg(activeIndex)" alt="Michele">
                             <div class="user">
@@ -88,7 +90,8 @@
                     <!-- /Top -->
 
                     <!-- Corpo dei messaggi -->
-                    <div id="container-messaggi">
+                    <div id="container-messaggi" 
+                    :class="(tema == 'light') ? 'chat-box' : 'dark-box'">
                         <div v-if="(message.status == 'sent')" 
                         v-for="(message, index) in contacts[activeIndex].messages" 
                         class="messaggio inviato bg_green">
@@ -106,7 +109,8 @@
                     <!-- /Corpo dei messaggi -->
                     
                     <!-- Barra invio messaggio -->
-                    <div id="container-input-mess">
+                    <div id="container-input-mess" 
+                    :class="(tema == 'light') ? 'input_mess_light' : 'dark'">
                         <div class="smile">
                             <i class="far fa-smile-wink c_grey"></i>
                         </div>
