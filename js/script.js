@@ -24,6 +24,38 @@ var app = new Vue(
                             status: 'received'
                         }
                     ],
+                    random: [
+                        {
+                            date: "",
+                            text: "Non sei simpatico e non fai ridere nessuno",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Non credo di aver capito",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Ah ah ah",
+                            status: "received"
+                        }, 
+                        {
+                            date: "",
+                            text: "Eccoci, rientriamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Proviamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Stai giocando a Guitar Hero?",
+                            status: "received"
+                        },
+                    ],
                 },
                 {
                     name: 'Fabio',
@@ -157,7 +189,8 @@ var app = new Vue(
             ],
             activeIndex: 0,
             nuovoMessaggio: "",
-            dataCorrente: ""
+            dataCorrente: "",
+            cerca: ""
         },
         methods: {
             goToImg: function(newIndex){
@@ -183,14 +216,39 @@ var app = new Vue(
                 //console.log(this.contacts[newIndex].messages);
                 //var d= new Date();
                 this.dataCorrente = dayjs().format('DD/MM/YYYY HH:mm:ss');
+
                 this.contacts[newIndex].messages.push({
                     date: this.dataCorrente,
                     text: this.nuovoMessaggio,
                     status: 'sent'
-                });
+                }),
+                
+                setTimeout(() => {
+                    const randomAnswer = this.contacts[this.activeIndex].random[Math.floor((Math.random() * (5 - 0 + 1)) + 0)].text;
+
+                    this.contacts[this.activeIndex].messages.push({
+                        date: dayjs().format('DD/MM/YY HH:mm:ss'),
+                        text: randomAnswer,
+                        status: 'received'
+                    })
+                }, 3500);
 
                 this.nuovoMessaggio = ""
+            },
+            ricerca: function(newContacs){
+                console.log("newContacs");
+                //const caratteri = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                /* var fruits = ["Banana", "Orange", "Apple", "Mango"];
+                var n = fruits.includes("Mango"); */
+                //recupero i nomi
+                let nomi = newContacs;
+                console.log(nomi);
+                console.log(this.cerca);
+                let ricerca = nomi.includes(this.cerca);
+                console.log(ricerca);
             }
+                
+           
         }
     }
 );

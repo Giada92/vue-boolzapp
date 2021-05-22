@@ -46,7 +46,8 @@
                         <div class="container-input-nav-i">
                             <i class="fas fa-search c_grey"></i>
                         </div>
-                        <input type="text" name="" id="input_nav" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" name="" id="input_nav" placeholder="Cerca o inizia una nuova chat"
+                        v-model="cerca" @keydown.enter="ricerca(contacts)">
                     </div>
                     <!-- /Nav-input -->
 
