@@ -190,10 +190,11 @@ var app = new Vue(
             tema: 'light',
             activeIndex: 0,
             nuovoMessaggio: "",
-            dataCorrente: ""
+            dataCorrente: "",
+            ricercaChat: ""
         },
         methods: {
-            //funzione per recuperare una parte di nuome delle immagini degli avatar
+            //funzione per recuperare una parte di nome delle immagini degli avatar
             goToImg: function(newIndex){
                 let img = this.contacts[newIndex].avatar;
                 return "img/avatar" + img + ".jpg";
@@ -216,9 +217,9 @@ var app = new Vue(
                 return this.contacts[newIndex].messages[lunghezza].date;
             },
             //funzione per inviare un messaggio
-            //setTimeout per ricevere una riposta random 
+            //setTimeout per ricevere una riposta random dopo un tot di tempo
             addNewMess: function(newIndex){ 
-                console.log("ho cliccato");
+                //console.log("ho cliccato");
                 //console.log(this.contacts[newIndex].messages);
                 //var d= new Date();
                 this.dataCorrente = dayjs().format('DD/MM/YYYY HH:mm:ss');
@@ -227,7 +228,7 @@ var app = new Vue(
                     date: this.dataCorrente,
                     text: this.nuovoMessaggio,
                     status: 'sent'
-                }),
+                }),            
                 
                 setTimeout(() => {
                     const randomAnswer = this.contacts[this.activeIndex].random[Math.floor((Math.random() * (5 - 0 + 1)) + 0)].text;
@@ -237,11 +238,10 @@ var app = new Vue(
                         text: randomAnswer,
                         status: 'received'
                     })
-                }, 3500);
-
+                }, 3500);  
                 this.nuovoMessaggio = ""
             },
-            //funzione per cambiare tema del colore
+            //condizione per cambiare tema del colore
             toggle() {
                 switch (this.tema) {
                   case 'light':
@@ -252,8 +252,26 @@ var app = new Vue(
                     break;
                   default:
                 }
-              }
-        }
+            },
+            //funzione per spostare la visualizzazione in basso all'ultimo messaggio inviato
+            scrollToEnd: function() {    	
+                var contenitore = document.getElementById("container-messaggi");
+                //console.log(contenitore);
+                var scrollHeight = contenitore.scrollHeight;
+                contenitore.scrollTop = scrollHeight;
+            }
+        },
+        //funzione ricerca nomi
+        computed: {
+            filteredList() {
+                return this.contacts.filter(contact => {
+                return contact.name.toLowerCase().includes(this.ricercaChat.toLowerCase());
+                })
+            }
+        },
+        updated() {
+            this.scrollToEnd();
+        },
     }
 );
 
@@ -261,3 +279,9 @@ var app = new Vue(
 
 /* Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione
 Click sul contatto mostra la conversazione del contatto cliccato */
+
+/* Milestone 3
+Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
+Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
+Milestone 4
+Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina) */

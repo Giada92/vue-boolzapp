@@ -48,15 +48,15 @@
                         <div class="container-input-nav-i">
                             <i class="fas fa-search c_grey"></i>
                         </div>
-                        <input type="text" name="" id="input_nav" placeholder="Cerca o inizia una nuova chat"
-                        v-model="cerca" @keydown.enter="ricerca(contacts)">
+                        <input type="text" name="" id="input_nav" placeholder="Cerca o inizia una nuova chat" v-model="ricercaChat" @keydown="filteredList">
                     </div>
                     <!-- /Nav-input -->
 
                     <!-- Contenitore lista chat -->
                     <div id="contatti" :class="tema">
-                        <div v-for="(contact, index) in contacts" class="chat"
-                            :class="(index == activeIndex) ? 'active' : ''"
+                        <div v-for="(contact, index) in filteredList" class="chat"
+                        :class="(tema == 'light') ? 'chat-light' : 'dark'"
+                        :class="(index == activeIndex) ? 'active' : ''"
                             @click="classeActive(index)">
                             <img :src="goToImg(index)" :alt="contact.name">
                             <div class="user">
@@ -96,11 +96,13 @@
                         v-for="(message, index) in contacts[activeIndex].messages" 
                         class="messaggio inviato bg_green">
                             <p>{{ message.text }}</p>
+                            <i class="fas fa-chevron-down"></i>
                             <h6 class="c_grey">{{ message.date }}</h6>
                         </div>
                         <div v-else class="messaggio ricevuto ">
                             <div class="messaggio inviato bg_white">
                                 <p>{{ message.text }}</p>
+                                <i class="fas fa-chevron-down"></i>
                                 <h6 class="c_grey">{{ message.date }}</h6>
                             </div>
                         </div>
