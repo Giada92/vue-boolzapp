@@ -485,7 +485,6 @@ var app = new Vue(
                 contenitore.scrollTop = scrollHeight;
             },
               //funzione ricerca nomi
-              //nn so come collegarlo all'HTML
               cercaLista: function() {
                 this.contacts.forEach(
                     (element) => {
