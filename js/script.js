@@ -78,6 +78,38 @@ var app = new Vue(
                             status: 'sent'
                         }
                     ],
+                    random: [
+                        {
+                            date: "",
+                            text: "Non sei simpatico e non fai ridere nessuno",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Non credo di aver capito",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Ah ah ah",
+                            status: "received"
+                        }, 
+                        {
+                            date: "",
+                            text: "Eccoci, rientriamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Proviamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Stai giocando a Guitar Hero?",
+                            status: "received"
+                        },
+                    ],
                 },     
                 {
                     name: 'Samuele',
@@ -100,6 +132,38 @@ var app = new Vue(
                             status: 'received'
                         }
                     ],
+                    random: [
+                        {
+                            date: "",
+                            text: "Non sei simpatico e non fai ridere nessuno",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Non credo di aver capito",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Ah ah ah",
+                            status: "received"
+                        }, 
+                        {
+                            date: "",
+                            text: "Eccoci, rientriamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Proviamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Stai giocando a Guitar Hero?",
+                            status: "received"
+                        },
+                    ],
                 },
                 {
                     name: 'Luisa',
@@ -116,6 +180,38 @@ var app = new Vue(
                             text: 'Si, ma preferirei andare al cinema',
                             status: 'received'
                         }
+                    ],
+                    random: [
+                        {
+                            date: "",
+                            text: "Non sei simpatico e non fai ridere nessuno",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Non credo di aver capito",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Ah ah ah",
+                            status: "received"
+                        }, 
+                        {
+                            date: "",
+                            text: "Eccoci, rientriamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Proviamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Stai giocando a Guitar Hero?",
+                            status: "received"
+                        },
                     ],
                 },
                 {
@@ -134,6 +230,38 @@ var app = new Vue(
                             status: 'received'
                         }
                     ],
+                    random: [
+                        {
+                            date: "",
+                            text: "Non sei simpatico e non fai ridere nessuno",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Non credo di aver capito",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Ah ah ah",
+                            status: "received"
+                        }, 
+                        {
+                            date: "",
+                            text: "Eccoci, rientriamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Proviamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Stai giocando a Guitar Hero?",
+                            status: "received"
+                        },
+                    ],
                 },
                 {
                     name: 'Valentina',
@@ -150,6 +278,38 @@ var app = new Vue(
                             text: 'Si, ma preferirei andare al cinema',
                             status: 'received'
                         }
+                    ],
+                    random: [
+                        {
+                            date: "",
+                            text: "Non sei simpatico e non fai ridere nessuno",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Non credo di aver capito",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Ah ah ah",
+                            status: "received"
+                        }, 
+                        {
+                            date: "",
+                            text: "Eccoci, rientriamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Proviamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Stai giocando a Guitar Hero?",
+                            status: "received"
+                        },
                     ],
                 },
                 {
@@ -168,6 +328,38 @@ var app = new Vue(
                             status: 'received'
                         }
                     ],
+                    random: [
+                        {
+                            date: "",
+                            text: "Non sei simpatico e non fai ridere nessuno",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Non credo di aver capito",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Ah ah ah",
+                            status: "received"
+                        }, 
+                        {
+                            date: "",
+                            text: "Eccoci, rientriamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Proviamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Stai giocando a Guitar Hero?",
+                            status: "received"
+                        },
+                    ],
                 },
                 {
                     name: 'Alberto',
@@ -184,6 +376,38 @@ var app = new Vue(
                             text: 'Si, ma preferirei andare al cinema',
                             status: 'received'
                         }
+                    ],
+                    random: [
+                        {
+                            date: "",
+                            text: "Non sei simpatico e non fai ridere nessuno",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Non credo di aver capito",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Ah ah ah",
+                            status: "received"
+                        }, 
+                        {
+                            date: "",
+                            text: "Eccoci, rientriamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Proviamo",
+                            status: "received"
+                        },
+                        {
+                            date: "",
+                            text: "Stai giocando a Guitar Hero?",
+                            status: "received"
+                        },
                     ],
                 }
             ],
@@ -259,15 +483,22 @@ var app = new Vue(
                 //console.log(contenitore);
                 var scrollHeight = contenitore.scrollHeight;
                 contenitore.scrollTop = scrollHeight;
-            }
-        },
-        //funzione ricerca nomi
-        computed: {
-            filteredList() {
-                return this.contacts.filter(contact => {
-                return contact.name.toLowerCase().includes(this.ricercaChat.toLowerCase());
-                })
-            }
+            },
+              //funzione ricerca nomi
+              //nn so come collegarlo all'HTML
+              cercaLista: function() {
+                this.contacts.forEach(
+                    (element) => {
+                        console.log(element);
+                        console.log(element.name.toLowerCase().startsWith(this.ricercaChat.toLowerCase()));
+                        if(element.name.toLowerCase().startsWith(this.ricercaChat.toLowerCase()) == true){
+                            element.visible = true;
+                        }else {
+                            element.visible = false;
+                        }
+                    }
+                );
+            },
         },
         updated() {
             this.scrollToEnd();
@@ -283,5 +514,14 @@ Click sul contatto mostra la conversazione del contatto cliccato */
 /* Milestone 3
 Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
 Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
+
 Milestone 4
 Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina) */
+
+/* computed: {
+    filteredList() {
+        return this.contacts.filter(contact => {
+        return contact.name.toLowerCase().includes(this.ricercaChat.toLowerCase());
+        })
+    }
+}, */

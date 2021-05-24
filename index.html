@@ -48,15 +48,17 @@
                         <div class="container-input-nav-i">
                             <i class="fas fa-search c_grey"></i>
                         </div>
-                        <input type="text" name="" id="input_nav" placeholder="Cerca o inizia una nuova chat" v-model="ricercaChat" @keydown="filteredList">
+                        <input type="text" name="" id="input_nav" placeholder="Cerca o inizia una nuova chat" v-model="ricercaChat" @keydown="cercaLista()">
                     </div>
                     <!-- /Nav-input -->
 
                     <!-- Contenitore lista chat -->
                     <div id="contatti" :class="tema">
-                        <div v-for="(contact, index) in filteredList" class="chat"
+                        <div v-for="(contact, index) in contacts" 
+                        class="chat"
                         :class="(tema == 'light') ? 'chat-light' : 'dark'"
                         :class="(index == activeIndex) ? 'active' : ''"
+                        :class="(contact.visible == false) ? 'visibility_hidden' : 'visibility_visible'"
                             @click="classeActive(index)">
                             <img :src="goToImg(index)" :alt="contact.name">
                             <div class="user">

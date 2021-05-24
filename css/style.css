@@ -341,3 +341,12 @@ h6::after {
 .dark-box {
     background-image: url("../img/darck.jpg");
 }
+
+/* Css per cambiare la visibilità dei nomi in lista cercati */
+.visibility_hidden {
+    visibility: hidden;
+}
+
+.visibility_visible {
+    visibility: visible;
+}
