@@ -284,6 +284,7 @@ i:hover {
     text-align: center;
     list-style-type: none;
     background-color: white;
+    z-index: 2;
 }
 
 .contenitore-list p {

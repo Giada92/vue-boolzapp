@@ -82,7 +82,7 @@
                             <img :src="goToImg(activeIndex)" alt="Michele">
                             <div class="user">
                                 <p>{{ contacts[activeIndex].name }}</p>
-                                <span class="c_grey">Ultimo accesso oggi alle {{ lastDataMessage(activeIndex) }}</span>
+                                <span class="c_grey"> {{ lastDataMessage(activeIndex) }}</span>
                             </div>
                         </div>
                         <div class="icons top">
@@ -100,7 +100,14 @@
                         v-for="(message, index) in contacts[activeIndex].messages" 
                         class="messaggio inviato bg_green">
                             <p>{{ message.text }}</p>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down"
+                            @click="menuOpen = !menuOpen">
+                            <span v-if="menuOpen" 
+                            class="dropdown-menu contenitore-list">
+                                <p @click="infoMessaggio(index)">Info Messaggio</p>
+                                <p @click="rimuovereMessaggio(index)"
+                                >Cancella Messaggio</p>
+                            </span></i>
                             <h6 class="c_grey">{{ message.date }}</h6>
                         </div>
                         <div v-else class="messaggio ricevuto ">
@@ -110,9 +117,8 @@
                                 @click="menuOpen = !menuOpen">
                                     <span v-if="menuOpen" 
                                     class="dropdown-menu contenitore-list">
-                                        <p href="#">Info Messaggio</p>
-                                        <p href="#"
-                                        @click="rimuovereElemento(index)"
+                                        <p>Info Messaggio</p>
+                                        <p @click="rimuovereMessaggio(index)"
                                         >Cancella Messaggio</p>
                                     </span>
                                 </i>

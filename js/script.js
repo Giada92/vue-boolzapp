@@ -432,6 +432,9 @@ var app = new Vue(
             lastMessage: function(newIndex){
                 //console.log(newIndex);
                 let lunghezza = this.contacts[newIndex].messages.length - 1;
+                if(lunghezza == -1){
+                    return "messaggi cancellati";
+                } 
                 //console.log(this.contacts[newIndex].messages[lunghezza].text);
                 return this.contacts[newIndex].messages[lunghezza].text.slice(0, 24) + `...`;
             },
@@ -439,6 +442,10 @@ var app = new Vue(
             lastDataMessage: function(newIndex) {
                 //console.log(newIndex);
                 let lunghezza = this.contacts[newIndex].messages.length - 1;
+                //console.log(lunghezza);
+                if(lunghezza == -1){
+                    return "Nessu accesso oggi";
+                } 
                 return this.contacts[newIndex].messages[lunghezza].date;
             },
             //funzione per inviare un messaggio
@@ -499,13 +506,18 @@ var app = new Vue(
                 });
             },
             //funzione per cancellare un messaggio
-            rimuovereElemento: function(newIndex){
-                console.log("cliccato");
-                console.log(this.activeIndex);
-                //console.log(this.contacts[this.activeIndex]);
+            rimuovereMessaggio: function(newIndex){
+                //console.log("cliccato");
+                //console.log(this.activeIndex);
                 console.log(this.contacts[this.activeIndex].messages.splice(newIndex, 1));
+                console.log(this.contacts[this.activeIndex].messages);
                 //console.log(this.contacts.messages.splice());
                 //console.log(this.contacts.messages);
+            },
+            infoMessaggio: function(newIndex){
+                //console.log("ho cliccato");
+                console.log(this.contacts[this.activeIndex].messages[newIndex].text);
+                console.log(this.contacts[this.activeIndex].messages[newIndex].date);
             }
         },
         updated() {
@@ -530,4 +542,5 @@ Milestone 4
 Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina) */
 
 /* Milestone 5: 
-clicco sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato */
+clicco sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+Visualizza ora e ultimo messaggio inviato/ricevuto nella lista dei contatti */
