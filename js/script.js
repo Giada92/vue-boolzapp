@@ -415,7 +415,8 @@ var app = new Vue(
             activeIndex: 0,
             nuovoMessaggio: "",
             dataCorrente: "",
-            ricercaChat: ""
+            ricercaChat: "",
+            menuOpen: false
         },
         methods: {
             //funzione per recuperare una parte di nome delle immagini degli avatar
@@ -485,19 +486,27 @@ var app = new Vue(
                 contenitore.scrollTop = scrollHeight;
             },
               //funzione ricerca nomi
-              cercaLista: function() {
-                this.contacts.forEach(
-                    (element) => {
-                        console.log(element);
-                        console.log(element.name.toLowerCase().startsWith(this.ricercaChat.toLowerCase()));
-                        if(element.name.toLowerCase().startsWith(this.ricercaChat.toLowerCase()) == true){
-                            element.visible = true;
-                        }else {
-                            element.visible = false;
-                        }
+            cercaLista: function() {
+            this.contacts.forEach(
+                (element) => {
+                    //console.log(element);
+                    //console.log(element.name.toLowerCase().startsWith(this.ricercaChat.toLowerCase()));
+                    if(element.name.toLowerCase().startsWith(this.ricercaChat.toLowerCase()) == true){
+                        element.visible = true;
+                    }else {
+                        element.visible = false;
                     }
-                );
+                });
             },
+            //funzione per cancellare un messaggio
+            rimuovereElemento: function(newIndex){
+                console.log("cliccato");
+                console.log(this.activeIndex);
+                //console.log(this.contacts[this.activeIndex]);
+                console.log(this.contacts[this.activeIndex].messages.splice(newIndex, 1));
+                //console.log(this.contacts.messages.splice());
+                //console.log(this.contacts.messages);
+            }
         },
         updated() {
             this.scrollToEnd();
@@ -505,9 +514,12 @@ var app = new Vue(
     }
 );
 
-/* Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto, ricavandoli dall'array contacts qui allegato */
+/* Milestone 1:
+Replica della grafica (immagine in allegato) con la possibilità di avere messaggi scritti dall’utente (verdi) e dall’interlocutore (bianco) assegnando due classi CSS diverse;
+Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto, ricavandoli dall'array contacts qui allegato */
 
-/* Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione
+/* Milestone 2
+Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione
 Click sul contatto mostra la conversazione del contatto cliccato */
 
 /* Milestone 3
@@ -517,10 +529,5 @@ Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente r
 Milestone 4
 Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina) */
 
-/* computed: {
-    filteredList() {
-        return this.contacts.filter(contact => {
-        return contact.name.toLowerCase().includes(this.ricercaChat.toLowerCase());
-        })
-    }
-}, */
+/* Milestone 5: 
+clicco sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato */

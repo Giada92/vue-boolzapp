@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -104,7 +106,16 @@
                         <div v-else class="messaggio ricevuto ">
                             <div class="messaggio inviato bg_white">
                                 <p>{{ message.text }}</p>
-                                <i class="fas fa-chevron-down"></i>
+                                <i class="fas fa-chevron-down"
+                                @click="menuOpen = !menuOpen">
+                                    <span v-if="menuOpen" 
+                                    class="dropdown-menu contenitore-list">
+                                        <p href="#">Info Messaggio</p>
+                                        <p href="#"
+                                        @click="rimuovereElemento(index)"
+                                        >Cancella Messaggio</p>
+                                    </span>
+                                </i>
                                 <h6 class="c_grey">{{ message.date }}</h6>
                             </div>
                         </div>

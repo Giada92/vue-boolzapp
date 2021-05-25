@@ -41,7 +41,7 @@ background: #555;
     display: flex;
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(#009688 20%, #DADBD4 10%);
+    background-image: linear-gradient(#009688 20%, #DADBD4 10%)
 }
 
 /* Main */
@@ -271,9 +271,27 @@ i:hover {
 }
 
 .messaggio:hover i{
-    /* right: 5px; */
     visibility: visible;
 }
+
+/* Menù a tendina sul messaggio */
+.contenitore-list {
+    position: absolute;
+    right: 0;
+    width: 180px;
+    height: 80px;
+    /* visibility: hidden; */
+    text-align: center;
+    list-style-type: none;
+    background-color: white;
+}
+
+.contenitore-list p {
+    padding: 10px;
+}
+
+
+/* /Menù a tendina sul messaggio */
 
 .messaggio > p {
     margin-right: 25px;
