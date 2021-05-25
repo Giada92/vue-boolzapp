@@ -96,34 +96,27 @@
                     <!-- Corpo dei messaggi -->
                     <div id="container-messaggi" 
                     :class="(tema == 'light') ? 'chat-box' : 'dark-box'">
-                        <div v-if="(message.status == 'sent')" 
-                        v-for="(message, index) in contacts[activeIndex].messages" 
-                        class="messaggio inviato bg_green">
+                        <div 
+                        v-for="(message, index) in contacts[activeIndex].messages"
+                        class="messaggio" 
+                        :class="{'inviato': message.status === 'sent', 'ricevuto': message.status === 'received', 'bg_green': message.status === 'sent', 'bg_white': message.status === 'received'}">
                             <p>{{ message.text }}</p>
                             <i class="fas fa-chevron-down"
-                            @click="menuOpen = !menuOpen">
+                            @click="menuOpen = !menuOpen; toggleIndex = index;">
                             <span v-if="menuOpen" 
                             class="dropdown-menu contenitore-list">
-                                <p @click="infoMessaggio(index)">Info Messaggio</p>
+                                <p @click="infoMessaggio()">Info Messaggio</p>
                                 <p @click="rimuovereMessaggio(index)"
                                 >Cancella Messaggio</p>
                             </span></i>
                             <h6 class="c_grey">{{ message.date }}</h6>
                         </div>
-                        <div v-else class="messaggio ricevuto ">
-                            <div class="messaggio inviato bg_white">
-                                <p>{{ message.text }}</p>
-                                <i class="fas fa-chevron-down"
-                                @click="menuOpen = !menuOpen">
-                                    <span v-if="menuOpen" 
-                                    class="dropdown-menu contenitore-list">
-                                        <p>Info Messaggio</p>
-                                        <p @click="rimuovereMessaggio(index)"
-                                        >Cancella Messaggio</p>
-                                    </span>
-                                </i>
-                                <h6 class="c_grey">{{ message.date }}</h6>
-                            </div>
+                        
+                        <div v-if="infoOpen" class="prova">
+                            <i class="fas fa-times" @click="infoOpen = !infoOpen"></i>
+                            <h5>INFO</h5>
+                            <p>Testo: '{{ infoMessaggioText() }}'</p>
+                            <p> Giorno e data: '{{infoMessaggioDate()}}'</p>
                         </div>
                     </div>
 
