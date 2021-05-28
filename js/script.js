@@ -411,14 +411,13 @@ var app = new Vue(
                     ],
                 }
             ],
-            tema: 'light',
+            theme: 'light',
             activeIndex: 0,
-            nuovoMessaggio: "",
-            dataCorrente: "",
-            ricercaChat: "",
+            newMessage: "",
+            currentDate: "",
+            searchChat: "",
             menuOpen: false,
             infoOpen: false,
-            indexMess: 0,
             toggleIndex: -1,
         },
         methods: {
@@ -428,28 +427,28 @@ var app = new Vue(
                 return "img/avatar" + img + ".jpg";
             },
             //funzione per selezionare un contatto
-            classeActive: function (newIndex) {
+            classActive: function (newIndex) {
                 this.activeIndex = newIndex;
             },
             //funzione per recuperare l'ultimo messaggio
             lastMessage: function(newIndex){
                 //console.log(newIndex);
-                let lunghezza = this.contacts[newIndex].messages.length - 1;
-                if(lunghezza == -1){
+                let lastMess = this.contacts[newIndex].messages.length - 1;
+                if(lastMess == -1){
                     return "messaggi cancellati";
                 } 
                 //console.log(this.contacts[newIndex].messages[lunghezza].text);
-                return this.contacts[newIndex].messages[lunghezza].text.slice(0, 24) + `...`;
+                return this.contacts[newIndex].messages[lastMess].text.slice(0, 24) + `...`;
             },
             //funzione per recuperare l'ultima data
-            lastDataMessage: function(newIndex) {
+            lastDateMessage: function(newIndex) {
                 //console.log(newIndex);
-                let lunghezza = this.contacts[newIndex].messages.length - 1;
+                let lastDate = this.contacts[newIndex].messages.length - 1;
                 //console.log(lunghezza);
-                if(lunghezza == -1){
+                if(lastDate == -1){
                     return "Nessun accesso oggi";
                 } 
-                return this.contacts[newIndex].messages[lunghezza].date;
+                return this.contacts[newIndex].messages[lastDate].date;
             },
             //funzione per inviare un messaggio
             //setTimeout per ricevere una riposta random dopo un tot di tempo
@@ -457,11 +456,11 @@ var app = new Vue(
                 //console.log("ho cliccato");
                 //console.log(this.contacts[newIndex].messages);
                 //var d= new Date();
-                this.dataCorrente = dayjs().format('DD/MM/YYYY HH:mm:ss');
+                this.currentDate = dayjs().format('DD/MM/YYYY HH:mm:ss');
 
                 this.contacts[newIndex].messages.push({
-                    date: this.dataCorrente,
-                    text: this.nuovoMessaggio,
+                    date: this.currentDate,
+                    text: this.newMessage,
                     status: 'sent'
                 }),            
                 
@@ -474,34 +473,34 @@ var app = new Vue(
                         status: 'received'
                     })
                 }, 3500);  
-                this.nuovoMessaggio = ""
+                this.newMessage = ""
             },
             //condizione per cambiare tema del colore
-            toggle() {
-                switch (this.tema) {
+            toggle: function () {
+                switch (this.theme) {
                   case 'light':
-                    this.tema = 'dark';
+                    this.theme = 'dark';
                     break;
                   case 'dark':
-                    this.tema = 'light';
+                    this.theme = 'light';
                     break;
                   default:
                 }
             },
             //funzione per spostare la visualizzazione in basso all'ultimo messaggio inviato
             scrollToEnd: function() {    	
-                var contenitore = document.getElementById("container-messaggi");
+                let container = document.getElementById("container-messages");
                 //console.log(contenitore);
-                var scrollHeight = contenitore.scrollHeight;
-                contenitore.scrollTop = scrollHeight;
+                let scrollHeight = container.scrollHeight;
+                container.scrollTop = scrollHeight;
             },
               //funzione ricerca nomi
-            cercaLista: function() {
+            searchName: function() {
             this.contacts.forEach(
                 (element) => {
                     //console.log(element);
-                    //console.log(element.name.toLowerCase().startsWith(this.ricercaChat.toLowerCase()));
-                    if(element.name.toLowerCase().startsWith(this.ricercaChat.toLowerCase()) == true){
+                    //console.log(element.name.toLowerCase().startsWith(this.searchChat.toLowerCase()));
+                    if(element.name.toLowerCase().startsWith(this.searchChat.toLowerCase()) == true){
                         element.visible = true;
                     }else {
                         element.visible = false;
@@ -509,16 +508,16 @@ var app = new Vue(
                 });
             },
             //funzione per cancellare un messaggio
-            rimuovereMessaggio: function(newIndex){
+            deleteMessage: function(newIndex){
                 //console.log("cliccato");
                 //console.log(this.activeIndex);
                 this.contacts[this.activeIndex].messages.splice(newIndex, 1);
             },
-            infoMessaggio: function(){
+            infoMessage: function(){
                 //console.log("ho cliccato");
                 this.infoOpen = !this.infoOpen;
             },
-            infoMessaggioText: function(){
+            infoMessageText: function(){
                 if (this.toggleIndex !== -1) {
                     const text = this.contacts[this.activeIndex].messages[this.toggleIndex].text;
                     return text;
@@ -527,7 +526,8 @@ var app = new Vue(
                 }
                //console.log(this.contacts[this.activeIndex].messages[newIndex].text);
             },
-            infoMessaggioDate: function(){
+            infoMessageDate: function(){
+                console.log(this.toggleIndex);
                 if (this.toggleIndex !== -1) {
                     const date = this.contacts[this.activeIndex].messages[this.toggleIndex].date;
                     return date;

@@ -22,13 +22,13 @@
             <main id="root">
                 <!-- Section - nav left -->
                 <section id="nav-left">
-                    <div class="container-top" :class="tema">
+                    <div class="container-top" :class="theme">
                         <div class="my_img top">
                             <img src="img/avatar_io.jpg" alt="">
                             <span>Giada Meloni</span>
                         </div>
                         <div class="icons top">
-                            <span>{{tema}}</span>
+                            <span>{{theme}}</span>
                             <i class="fas fa-circle-notch"
                             @click="toggle"></i>
                             <i class="fas fa-comment-alt"></i>
@@ -36,9 +36,9 @@
                         </div>
                     </div>
                     <!-- Notifiche nuovi messaggi -->
-                    <div class="notifiche" :class="tema">
+                    <div class="notice" :class="theme">
                         <i class="far fa-bell-slash"></i>
-                        <div class="text-notifiche">
+                        <div class="text-notice">
                             <p>Ricevi notifiche di nuovi messaggi</p>
                             <span class="c_grey">Attiva notifiche deckstop</span>
                         </div>
@@ -46,28 +46,27 @@
                     <!-- /Notifiche nuovi messaggi -->
 
                     <!-- Nav-input -->
-                    <div class="container-input-nav" :class="tema">
+                    <div class="container-input-nav" :class="theme">
                         <div class="container-input-nav-i">
                             <i class="fas fa-search c_grey"></i>
                         </div>
-                        <input type="text" name="" id="input_nav" placeholder="Cerca o inizia una nuova chat" v-model="ricercaChat" @keyup="cercaLista()">
+                        <input type="text" name="" id="input_nav" placeholder="Cerca o inizia una nuova chat" v-model="searchChat" @keyup="searchName()">
                     </div>
                     <!-- /Nav-input -->
 
                     <!-- Contenitore lista chat -->
-                    <div id="contatti" :class="tema">
+                    <div id="contacts" :class="theme">
                         <div v-for="(contact, index) in contacts" 
                         class="chat"
-                        :class="(tema == 'light') ? 'chat-light' : 'dark'"
-                        :class="(index == activeIndex) ? 'active' : ''"
+                        :class="[(index == activeIndex) ? 'active' : '' , (theme == 'light') ? 'chat-light' : 'dark' ]"
                         v-show="contact.visible == true"
-                            @click="classeActive(index)">
+                            @click="classActive(index)">
                             <img :src="goToImg(index)" :alt="contact.name">
                             <div class="user">
                                 <p>{{ contact.name }}</p>
                                 <span class="c_grey">{{ lastMessage(index) }}</span>
                             </div>
-                            <p>{{ lastDataMessage(index) }}</p>
+                            <p>{{ lastDateMessage(index) }}</p>
                         </div>
                     </div>
                     <!-- /Contenitore lista chat -->
@@ -77,12 +76,12 @@
                 <!-- Section - right -->
                 <section id="section-right">
                     <!-- Top -->
-                    <div class="container-top border" :class="tema">
+                    <div class="container-top border" :class="theme">
                         <div class="avatar">
-                            <img :src="goToImg(activeIndex)" alt="Michele">
+                            <img :src="goToImg(activeIndex)" alt="contact.name">
                             <div class="user">
                                 <p>{{ contacts[activeIndex].name }}</p>
-                                <span class="c_grey"> {{ lastDataMessage(activeIndex) }}</span>
+                                <span class="c_grey"> {{ lastDateMessage(activeIndex) }}</span>
                             </div>
                         </div>
                         <div class="icons top">
@@ -94,29 +93,29 @@
                     <!-- /Top -->
 
                     <!-- Corpo dei messaggi -->
-                    <div id="container-messaggi" 
-                    :class="(tema == 'light') ? 'chat-box' : 'dark-box'">
+                    <div id="container-messages" 
+                    :class="(theme == 'light') ? 'chat-box' : 'dark-box'">
                         <div 
                         v-for="(message, index) in contacts[activeIndex].messages"
-                        class="messaggio" 
-                        :class="{'inviato': message.status === 'sent', 'ricevuto': message.status === 'received', 'bg_green': message.status === 'sent', 'bg_white': message.status === 'received'}">
+                        class="message" 
+                        :class="{'sent': message.status === 'sent', 'received': message.status === 'received', 'bg_green': message.status === 'sent', 'bg_white': message.status === 'received'}">
                             <p>{{ message.text }}</p>
                             <i class="fas fa-chevron-down"
                             @click="menuOpen = !menuOpen; toggleIndex = index;">
                             <span v-if="menuOpen" 
-                            class="dropdown-menu contenitore-list">
-                                <p @click="infoMessaggio()">Info Messaggio</p>
-                                <p @click="rimuovereMessaggio(index)"
+                            class="dropdown-menu container-list">
+                                <p @click="infoMessage()">Info Messaggio</p>
+                                <p @click="deleteMessage(index)"
                                 >Cancella Messaggio</p>
                             </span></i>
                             <h6 class="c_grey">{{ message.date }}</h6>
                         </div>
                         
-                        <div v-if="infoOpen" class="prova">
+                        <div v-if="infoOpen" class="info-message">
                             <i class="fas fa-times" @click="infoOpen = !infoOpen"></i>
                             <h5>INFO</h5>
-                            <p>Testo: '{{ infoMessaggioText() }}'</p>
-                            <p> Giorno e data: '{{infoMessaggioDate()}}'</p>
+                            <p>Testo: '{{ infoMessageText() }}'</p>
+                            <p> Giorno e data: '{{infoMessageDate()}}'</p>
                         </div>
                     </div>
 
@@ -124,13 +123,13 @@
                     
                     <!-- Barra invio messaggio -->
                     <div id="container-input-mess" 
-                    :class="(tema == 'light') ? 'input_mess_light' : 'dark'">
+                    :class="(theme == 'light') ? 'input_mess_light' : 'dark'">
                         <div class="smile">
                             <i class="far fa-smile-wink c_grey"></i>
                         </div>
-                        <input type="text" id="messaggi" placeholder="Scrivi un messaggio"
-                        v-model="nuovoMessaggio" @keydown.enter="addNewMess(activeIndex)">
-                        <div class="microfono">
+                        <input type="text" id="messages" placeholder="Scrivi un messaggio"
+                        v-model="newMessage" @keydown.enter="addNewMess(activeIndex)">
+                        <div class="microphone">
                             <i class="fas fa-microphone c_grey"></i>
                         </div>
                     </div>
